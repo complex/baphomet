@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Send money to <%= ENV['NAME'] %></title>
+    <%= stylesheet_link_tag    'application', '//cloud.typography.com/7182032/658464/css/fonts.css' %>
+    <%= javascript_include_tag 'application', 'https://js.stripe.com/v2' %>
+    <script>
+      Stripe.setPublishableKey('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+    </script>
+    <%= csrf_meta_tags %>
+    <meta name='viewport' content='initial-scale = 1'>
+  </head>
+
+  <body>
+
+    <header>
+      <h1><%= link_to "$", root_path %></h1>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+  </body>
+
+</html>

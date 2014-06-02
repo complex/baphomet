@@ -1,0 +1,51 @@
+<%= form_for @payment do |form| %>
+  <div class='errors'>
+    <% if notice %>
+      <p class='notice'><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class='alert'><%= alert %></p>
+    <% end %>
+    <% @payment.errors.messages.each do |attribute, messages| %>
+      <p><%= messages.first %></p>
+    <% end %>
+  </div>
+  <h2>Details</h2>
+  <section>
+    <h3>TO</h3>
+    <p><%= ENV['NAME'] %></p>
+  </section>
+  <section>
+    <%= form.label :amount, "Amount (USD)" %>
+    <%= form.number_field :amount, placeholder: '15', min: 1, autofocus: true %>
+  </section>
+  <section>
+    <%= form.label :from %>
+    <%= form.text_field :from, placeholder: "Neil" %>
+  </section>
+  <section>
+    <%= form.label :note %>
+    <%= form.text_area :note, placeholder: "Lunch" %>
+  </section>
+  <h2>Card</h2>
+  <div class='<%= 'existing_card' if @payment.card_token.present? %>'>
+    <section class='existing number'>
+      <h3>Number</h3>
+      <p>Loading...</p>
+    </section>
+    <section class='existing expiration'>
+      <h3>Expiration</h3>
+      <p>Loading...</p>
+    </section>
+    <section class='new'>
+      <%= form.label :number %>
+      <%= form.text_field :number, placeholder: "5555 5555 5555 5555" %>
+    </section>
+    <section class='new'>
+      <%= form.label :expiration %>
+      <%= form.text_field :expiration, placeholder: "7 / 2015" %>
+    </section>
+  </div>
+  <%= form.hidden_field :card_token %>
+  <%= form.submit "Send money" %>
+<% end %>

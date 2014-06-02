@@ -1,0 +1,224 @@
+//= require_tree .
+//= require_self
+
+$background-color: #fffbf4;
+$primary-color: #00b4ff;
+$secondary-color: lighten($primary-color, 48%);
+$error-color: #d00;
+$text-color: black;
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 1rem 0;
+  background: $background-color;
+  font: 16px 'helvetica neue', 'arial', sans-serif;
+}
+
+main,
+header {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+main {
+  padding: 1rem;
+}
+
+header {
+  padding: 1rem 2rem;
+  @media (min-width: 40rem) {
+    padding: 1rem 3rem;
+  }
+}
+
+form {
+  padding: 2rem 1rem;
+  background: white;
+
+  div.errors {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    p {
+      padding-top: 1.5em;
+      color: $error-color;
+      color: white;
+      border: none;
+      background: rgba(221, 0, 0, .8);
+    }
+  }
+
+  @media (min-width: 40rem) {
+    padding: 2rem;
+
+    div.errors {
+      position: static;
+
+      p {
+        color: $error-color;
+        background: none;
+        border: solid .1rem $error-color;
+        &:last-child {
+          margin-bottom: 2rem;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+h1,
+h2,
+h3,
+label,
+input[type=submit] {
+  margin: 0;
+  text-transform: uppercase;
+  font: .75em 'gotham ssm a', 'gotham ssm b';
+}
+
+h1 {
+
+  a {
+    display: inline-block;
+    width: 4em;
+    height: 4em;
+    margin: 0;
+    padding-top: 1.2em;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+    color: inherit;
+    border: solid .3em black;
+    border-radius: 2em;
+  }
+
+}
+
+h2 {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: .3rem 0;
+  font-weight: 800;
+  color: $primary-color;
+  background: none;
+  &:first-of-type {
+    margin-top: 0;
+  }
+  &:last-of-type {
+    margin-top: 2rem;
+  }
+}
+
+h3 {
+  margin: 0;
+}
+
+h3,
+label {
+  display: block;
+  position: absolute;
+  top: 1.5em;
+  left: 1.5em;
+  margin: -.5em;
+  padding: .5em;
+  color: $primary-color;
+  border-radius: .3rem;
+  @media (min-width: 40rem) {
+    top: 1.7em;
+    left: 0;
+  }
+}
+
+input[type=text],
+input[type=number],
+textarea {
+  outline: none;
+  display: block;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+input[type=text],
+input[type=number],
+textarea,
+form p {
+  box-sizing: border-box;
+  width: 100%;
+  margin: -.1rem 0 0 0;
+  padding: 3.5em 1.3em 1.5em 1.4em;
+  font-family: 'helvetica neue', 'arial', sans-serif;
+  font-size: .8em;
+  background: none;
+  border: solid .1em $primary-color;
+  @media (min-width: 40rem) {
+    width: calc(100% - 10rem);
+    margin-left: 10rem;
+    padding-top: 1.5em;
+  }
+}
+
+textarea {
+  height: 9em;
+}
+
+input[type=submit] {
+  display: block;
+  width: 100%;
+  margin: 2rem 0 0 0;
+  padding: 1.5em 0;
+  font-weight: 800;
+  color: white;
+  background: $primary-color;
+  outline: none;
+  border: none;
+  border-radius: .3rem;
+  -webkit-appearance: none;
+  &:focus,
+  &:active {
+    background: darken($primary-color, 5%);
+  }
+  @media (min-width: 40rem) {
+    width: calc(100% - 10rem);
+    margin-left: 10rem;
+  }
+}
+
+form {
+
+  section {
+    position: relative;
+  }
+
+  .existing {
+    display: none;
+  }
+
+  > .existing_card {
+
+    a {
+      position: absolute;
+      right: 1rem;
+      color: $primary-color;
+    }
+
+    .existing {
+      display: block;
+    }
+
+    .new {
+      display: none;
+    }
+
+  }
+
+}

@@ -1,0 +1,10 @@
+default: &default
+  adapter: postgresql
+
+development:
+  <<: *default
+  database: baphomet_development
+
+test:
+  <<: *default
+  database: baphomet_test
