@@ -4,7 +4,7 @@
 $background-color: #fffbf4;
 $primary-color: #00b4ff;
 $secondary-color: lighten($primary-color, 48%);
-$error-color: #d00;
+$error-color: #e00;
 $text-color: black;
 
 * {
@@ -14,7 +14,7 @@ $text-color: black;
 
 body {
   margin: 0;
-  padding: 1rem 0;
+  padding: 1rem;
   background: $background-color;
   font: 16px 'helvetica neue', 'arial', sans-serif;
 }
@@ -26,7 +26,9 @@ header {
 }
 
 main {
-  padding: 1rem;
+  margin: 1rem auto;
+  padding: 2rem 1rem;
+  background: white;
 }
 
 header {
@@ -37,26 +39,25 @@ header {
 }
 
 form {
-  padding: 2rem 1rem;
   background: white;
 
   div.errors {
-    z-index: 1;
+    z-index: 20;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     p {
-      padding-top: 1.5em;
+      padding: 1.35rem 2rem 1.3rem 2rem;
       color: $error-color;
       color: white;
       border: none;
-      background: rgba(221, 0, 0, .8);
+      background: rgba(220, 0, 0, .9);
     }
   }
 
   @media (min-width: 40rem) {
-    padding: 2rem;
+    padding: 0 2rem;
 
     div.errors {
       position: static;
@@ -65,6 +66,8 @@ form {
         color: $error-color;
         background: none;
         border: solid .1rem $error-color;
+        padding-right: 1.1rem;
+        padding-left: 1.1rem;
         &:last-child {
           margin-bottom: 2rem;
         }
@@ -175,7 +178,7 @@ input[type=submit] {
   display: block;
   width: 100%;
   margin: 2rem 0 0 0;
-  padding: 1.5em 0;
+  padding: 1.3rem 0;
   font-weight: 800;
   color: white;
   background: $primary-color;
@@ -219,6 +222,42 @@ form {
       display: none;
     }
 
+  }
+
+}
+
+main {
+  > p {
+    font-size: .8em;
+  }
+}
+
+header {
+
+  div {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.3rem 0;
+    font-size: .8em;
+    color: white;
+    &.notice {
+      background: rgba(0, 170, 0, .9);
+    }
+    &.alert {
+      background: rgba(220, 0, 0, .9);
+    }
+  }
+
+  p {
+    margin: 0 auto;
+    padding: 0 2rem;
+    max-width: 42rem;
+    @media (min-width: 40rem) {
+      padding: 0 4rem;
+    }
   }
 
 }

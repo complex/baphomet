@@ -6,7 +6,12 @@ class Payment < ActiveRecord::Base
   validates_numericality_of :amount, greater_than_or_equal_to: 1, message: "Amount must be at least $1."
   validates_presence_of :card_token, message: "There was a problem communicating with the card processor. Please try again in a minute."
 
+  before_create :generate_token
   before_create :charge
+
+  def to_param
+    self.token
+  end
 
   def charge
     charge = Stripe::Charge.create(
@@ -22,6 +27,13 @@ class Payment < ActiveRecord::Base
   rescue => error
     self.errors.add :base, "There was a problem charging your card."
     return false
+  end
+
+  def generate_token
+    self.token = SecureRandom.hex 3
+    if Payment.exists? token: self.token
+      generate_token
+    end
   end
 
 end

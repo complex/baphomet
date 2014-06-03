@@ -16,6 +16,16 @@
   <body>
 
     <header>
+      <% if notice %>
+        <div class='notice'>
+          <p><%= notice %></p>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class='alert'>
+          <p><%= alert %></p>
+        </div>
+      <% end %>
       <h1><%= link_to "$", root_path %></h1>
     </header>
 

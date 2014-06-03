@@ -25,6 +25,7 @@ class PaymentsController < ApplicationController
   end
 
   def show
+    flash[:notice] = "Payment received. Thanks!"
     redirect_to root_path
   end
 

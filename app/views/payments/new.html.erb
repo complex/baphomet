@@ -1,11 +1,5 @@
 <%= form_for @payment do |form| %>
   <div class='errors'>
-    <% if notice %>
-      <p class='notice'><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class='alert'><%= alert %></p>
-    <% end %>
     <% @payment.errors.messages.each do |attribute, messages| %>
       <p><%= messages.first %></p>
     <% end %>
@@ -17,7 +11,7 @@
   </section>
   <section>
     <%= form.label :amount, "Amount (USD)" %>
-    <%= form.number_field :amount, placeholder: '15', min: 1, autofocus: true %>
+    <%= form.text_field :amount, placeholder: '15', autofocus: true %>
   </section>
   <section>
     <%= form.label :from %>
